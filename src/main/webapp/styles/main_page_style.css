@@ -1,0 +1,95 @@
+body {
+     margin: 0px 0px 20px 0px;
+     padding: 0px 0px 20px 0px;
+     background: url(../images/main_logo.jpg) top left repeat-x;
+     height: 66px;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+a {
+    color: #57868f;
+    text-decoration: none;
+}
+.header {
+    height: 66px;
+    background: url(../images/main_logo.jpg) bottom left no-repeat;
+    overflow: hidden;
+}
+.header h1 a {
+    display: block;
+    background: url(../images/main_logo.jpg) top left no-repeat;
+    width: 180px;
+    height: 39px;
+    text-indent: -9999px;
+    margin: 8px 0 0 18px;
+}
+ul.tab-bar {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background: url(../images/border_blue.png) bottom left repeat-x;
+    min-width: 940px;
+}
+/* NAVIGATION TABS */
+ul.tab-bar {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background: url(../images/border_blue.png) bottom left repeat-x;
+    min-width: 940px;
+}
+
+ul.tab-bar li.tab {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul.tab-bar li.tab a {
+    display: block;
+    float: left;
+    border-top: 2px solid #80a6ad;
+    border-bottom: 1px solid #c6d7da;
+    margin: 1px 1px 0 0;
+    text-align: center;
+    background: #e7eff7;
+    color: #336666;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+ul.tab-bar li.tab a span {
+    display: block;
+    border-bottom: 1px solid #ffffff;
+    padding: 10px 30px 9px 30px;
+}
+
+ul.tab-bar li.tab-act {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul.tab-bar li.tab-act a {
+    display: block;
+    float: left;
+    border-top: 4px solid #ff6600;
+    text-align: center;
+    background: #ffffff;
+    color: #ff6600;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0px 1px 0 0;
+}
+
+ul.tab-bar li.tab-act a span {
+    display: block;
+    padding: 10px 30px 10px 30px;
+    border-left: 1px solid #c6d7da;
+    border-right: 1px solid #c6d7da;
+}
