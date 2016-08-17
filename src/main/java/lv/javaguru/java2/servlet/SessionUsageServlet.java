@@ -1,12 +1,12 @@
 package lv.javaguru.java2.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 
 public class SessionUsageServlet extends HttpServlet {
@@ -29,7 +29,7 @@ public class SessionUsageServlet extends HttpServlet {
 		// Actual logic goes here.
 		PrintWriter out = resp.getWriter();
 		out.println("<h1>" + "Hello World from Java!" + "</h1>");
-		out.println("Counrer = " + session.getAttribute("key"));
+		out.println("Counter = " + session.getAttribute("key"));
 	}
 
 }

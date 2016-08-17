@@ -1,7 +1,7 @@
 body {
      margin: 0px 0px 20px 0px;
      padding: 0px 0px 20px 0px;
-     background: url(../images/main_logo.jpg) top left repeat-x;
+     background: url(../images/bg_header.png) top left repeat-x;
      height: 66px;
      font-family: Arial, Helvetica, sans-serif;
  }
@@ -92,4 +92,245 @@ ul.tab-bar li.tab-act a span {
     padding: 10px 30px 10px 30px;
     border-left: 1px solid #c6d7da;
     border-right: 1px solid #c6d7da;
+}
+/* FILTER TABLE */
+.box1 .body table.filtertable th {
+    padding: 0 1px 1px 4px;
+    font-size: 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: bottom;
+    color: #636363;
+}
+
+.box1 .body table.filtertable td {
+    padding: 0 1px 0 3px;
+}
+
+/* //FILTER TABLE */
+
+th.tabletitle {
+    background: none;
+    font-size: 12px;
+    margin: 5px 4px 3px 4px;
+    color: #0c5361;
+}
+tr.form-row.none:hover {
+    background-color: #fafafa;
+}
+
+tr.form-row.editedField:hover {
+    background-color: #e1e9f0;
+}
+
+/* DATA TABLE 1 */
+.datatable {
+    border: 1px solid #c6d7da;
+    padding: 1px;
+    font-size: 12px;
+}
+
+.datatable table th {
+    background: #80a6ad;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: left;
+    padding: 3px 3px 3px 3px;
+}
+
+.datatable table td {
+    background: #e7eff7;
+    border-top: 1px solid #ffffff;
+    padding: 1px 3px 1px 3px;
+    vertical-align: middle;
+}
+
+.datatable table tr.even td {
+    background: #f5faff;
+    vertical-align: middle;
+}
+
+.datatable table tr.error td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+.datatable table tr.errorfixed td {
+    background: #ffcc66;
+    vertical-align: middle;
+}
+
+.datatable table tr.errorpassive td {
+    background: #ffffcc;
+    vertical-align: middle;
+}
+
+.datatable table td.action {
+    text-align: right;
+    vertical-align: middle;
+}
+
+.datatable table td.action a.bttn {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.datatable table td.action a.bttn span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+    _margin: 0 0 0 7px;
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #707070;
+    font-weight: bold;
+    white-space: nowrap;
+}
+/* DATA TABLE 2 */
+.datatable2 {
+    border: 1px solid #80a6ad;
+    padding: 1px;
+    font-size: 12px;
+}
+
+.datatable2 table {
+    border-collapse: collapse;
+}
+
+.datatable2 th {
+    background: #80a6ad;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: left;
+    padding: 3px 3px 3px 3px;
+}
+
+.datatable2 td {
+    background: #e7eff7;
+    border-top: 1px solid #ffffff;
+    padding: 1px 3px 1px 3px;
+    vertical-align: middle;
+}
+
+.datatable2 tr.even td {
+    background: #f5faff;
+    vertical-align: middle;
+}
+
+.datatable2 tr.error td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+.datatable2 tr.deleted td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+/*.datatable2 tr.manual td { background: #C5EAEC; }*/
+.datatable2 td.action {
+    text-align: right;
+    vertical-align: middle;
+}
+
+.datatable2 td.action a.bttn {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.datatable2 td.action a.bttn span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #707070;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.datatable2 td.action a.bttndisabled {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.datatable2 td.action a.bttndisabled span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #C0C0C0;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* //DATA TABLE 2 */
+
+/* DATA TABLE 3 */
+.datatable3 {
+    border: 1px solid #80a6ad;
+    padding: 1px;
+    font-size: 12px;
+}
+
+.datatable3 table {
+    border-collapse: collapse;
+}
+
+.datatable3 th {
+    background: #80a6ad;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: left;
+    padding: 3px 3px 3px 3px;
+}
+
+.datatable3 td {
+    background: #ffffff;
+    padding: 1px 3px 1px 3px;
+    vertical-align: middle;
+}
+
+.datatable3 tr.even td {
+    background: #f5faff;
+    vertical-align: middle;
+}
+
+.datatable3 tr.error td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+.datatable3 tr.deleted td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+/*.datatable3 tr.manual td { background: #C5EAEC; }*/
+.datatable3 td.action {
+    text-align: right;
+    vertical-align: middle;
 }

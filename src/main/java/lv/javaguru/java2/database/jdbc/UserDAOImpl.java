@@ -12,6 +12,9 @@ import java.util.List;
 
 public class UserDAOImpl extends DAOImpl implements UserDAO {
 
+
+
+
     @Override
     public void create(User user) throws DBException {
         if (user == null) {
@@ -42,7 +45,7 @@ public class UserDAOImpl extends DAOImpl implements UserDAO {
     }
 
     @Override
-    public User getById(Long id) throws DBException {
+    public User getById(int id) throws DBException {
         Connection connection = null;
 
         try {

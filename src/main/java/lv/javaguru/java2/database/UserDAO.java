@@ -8,7 +8,7 @@ public interface UserDAO {
 
     void create(User user) throws DBException;
 
-    User getById(Long id) throws DBException;
+    User getById(int id) throws DBException;
 
     void delete(Long id) throws DBException;
 

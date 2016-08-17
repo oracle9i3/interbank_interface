@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 public class HelloWorldServlet extends HttpServlet {
 
 	@Override
@@ -16,10 +17,12 @@ public class HelloWorldServlet extends HttpServlet {
 		// Set response content type
 		resp.setContentType("text/html");
 
+
 		// Prepare output html
 		PrintWriter out = resp.getWriter();
-		out.println("<h1>" + "Hello WWW world from Java!" + "</h1>");		
-		out.println("<h1>" + "Hello WWW world from Java!" + "</h1>");
+
+		out.println("<h1>" + "Hello WWW world from HelloWorldServlet  (h1)!" + "</h1>");
+		out.println("<h2>" + "Hello from me from HelloWorldServlet  (h2)!" + "</h2>");
 	}
 
 }

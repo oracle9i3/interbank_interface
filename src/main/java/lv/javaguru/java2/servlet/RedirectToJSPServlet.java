@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+//@WebServlet("/index")
 public class RedirectToJSPServlet extends HttpServlet {
 
     @Override
@@ -15,7 +15,10 @@ public class RedirectToJSPServlet extends HttpServlet {
                          HttpServletResponse response) throws ServletException, IOException {
         // Prepare output html
         ServletContext servletContext = getServletContext();
+
+        request.setAttribute("name", "John");
         RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/helloWorld.jsp");
+
         requestDispatcher.forward(request, response);
     }
 

@@ -1,5 +1,7 @@
 package lv.javaguru.java2.servlet.mvc;
 
+import lv.javaguru.java2.database.DBException;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +16,9 @@ public class MVCFilter implements Filter {
 
     public void init(FilterConfig filterConfig) throws ServletException {
         controllers = new HashMap<String, MVCController>();
-        controllers.put("/hello", new HelloWorldController());
+        controllers.put("/index",new HelloWorldController());  //mapping stranici na controller !!!!!!!!!!
+        controllers.put("/main",new CustomerListController());
+        controllers.put("/*", new HelloWorldController());  //mapping stranici na controller !!!!!!!!!!
     }
 
     public void doFilter(ServletRequest request,
@@ -23,16 +27,21 @@ public class MVCFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest)request;
         HttpServletResponse resp = (HttpServletResponse)response;
 
-        String contextURI = req.getServletPath();
-        MVCController controller = controllers.get(contextURI);
+        String contextURI = req.getServletPath();//unikalnij put zaprosa , k kakoj stanice obratilis'
+        MVCController controller = controllers.get(contextURI);// naprimer prishlo /hello i mi nahodim ego kontroller
         if (controller != null) {
-            MVCModel model = controller.execute(req);
+            MVCModel model = null;
+            try {
+                model = controller.execute(req);
+            } catch (DBException e) {
+                e.printStackTrace();
+            }
 
-            req.setAttribute("model", model.getData());
+            req.setAttribute("model", model.getData());// zdes dannie dlja prorisovki UI komponenta
 
-            ServletContext context = req.getServletContext();
+            ServletContext context = req.getServletContext();// vse jsp moego prilozhenija
             RequestDispatcher requestDispacher =
-                    context.getRequestDispatcher(model.getViewName());
+                    context.getRequestDispatcher(model.getViewName()); // nazvanie jsp kuda perejti
             requestDispacher.forward(req, resp);
         }
         else filterChain.doFilter(request,response);

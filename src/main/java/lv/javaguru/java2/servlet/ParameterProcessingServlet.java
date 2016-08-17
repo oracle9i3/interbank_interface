@@ -1,11 +1,11 @@
 package lv.javaguru.java2.servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 public class ParameterProcessingServlet extends HttpServlet {
 
@@ -21,7 +21,7 @@ public class ParameterProcessingServlet extends HttpServlet {
 
 		// Prepare output html
 		PrintWriter out = resp.getWriter();
-		out.println("<h1>" + "Hello World from Java!" + "</h1>");
+		out.println("<h1>" + "Hello World from ParameterProcessingServlet!" + "</h1>");
 		out.println("Param 1 = " + paramValue);
 	}
 
