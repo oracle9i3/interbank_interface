@@ -18,5 +18,5 @@ public class CustomerListController implements MVCController{
 
         List<Customer> myList = customerDAO.getAll();
         return new MVCModel(myList, "/customerList.jsp");
-    }
-}
+         }
+         }
