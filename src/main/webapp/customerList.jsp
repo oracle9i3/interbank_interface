@@ -30,10 +30,24 @@
             <td><c:out value =" ${row.first_name}" /> </td>
             <td><c:out value ="${row.last_name}" /> </td>
             <td><c:out value ="${row.email}" /> </td>
-            <td><c:out value ="${row.active}" /> </td>
+
+            <td>
+                <c:choose>
+                <c:when test="${row.active=='1'}"> ACTIVE
+            </c:when>
+            <c:otherwise>
+                PASSIVE
+             </c:otherwise>
+                </c:choose>
+            </td>
+
             <td><c:out value ="${row.create_date}" /> </td>
             <td><c:out value ="${row.last_update}" /> </td>
-
+            <td nowrap="nowrap" class="action">
+               <a href="" class="button">
+               <span> View customer payments </span>
+               </a>
+            </td>
         </tr>
     </c:forEach>
 
