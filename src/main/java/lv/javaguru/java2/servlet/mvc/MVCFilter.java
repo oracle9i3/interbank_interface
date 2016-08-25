@@ -1,6 +1,10 @@
 package lv.javaguru.java2.servlet.mvc;
 
 import lv.javaguru.java2.database.DBException;
+import lv.javaguru.java2.domain.SpringConfig;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -8,17 +12,35 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MVCFilter implements Filter {
 
-    private Map<String, MVCController> controllers;
+    private static Logger logger = Logger.getLogger(MVCFilter.class.getName());
 
+    private ApplicationContext springContext;
+
+    private Map<String, MVCController> controllerMapping;
+
+    private MVCController getBean(Class clazz){
+        return (MVCController) springContext.getBean(clazz);
+    }
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        controllers = new HashMap<String, MVCController>();
-        controllers.put("/index",new HelloWorldController());  //mapping stranici na controller !!!!!!!!!!
-        controllers.put("/main",new CustomerListController());
-        controllers.put("/*", new HelloWorldController());  //mapping stranici na controller !!!!!!!!!!
+        try {
+            springContext =
+                    new AnnotationConfigApplicationContext(SpringConfig.class);
+        } catch (BeansException e) {
+            logger.log(Level.INFO, "Spring context failed to start", e);
+        }
+
+        controllerMapping = new HashMap<String, MVCController>();
+        //controllers = new HashMap<String, MVCController>();
+        controllerMapping.put("/index",new HelloWorldController());  //mapping stranici na controller !!!!!!!!!!
+        controllerMapping.put("/main", getBean(CustomerListController.class));
+        controllerMapping.put("/payments", getBean(PaymentController.class));
+       // controllers.put("/*", new HelloWorldController());  //mapping stranici na controller ??!!!!!!!!!!
     }
 
     public void doFilter(ServletRequest request,
@@ -28,7 +50,7 @@ public class MVCFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse)response;
 
         String contextURI = req.getServletPath();//unikalnij put zaprosa , k kakoj stanice obratilis'
-        MVCController controller = controllers.get(contextURI);// naprimer prishlo /hello i mi nahodim ego kontroller
+        MVCController controller = controllerMapping.get(contextURI);// naprimer prishlo /hello i mi nahodim ego kontroller
         if (controller != null) {
             MVCModel model = null;
             try {

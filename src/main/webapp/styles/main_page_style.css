@@ -334,3 +334,34 @@ tr.form-row.editedField:hover {
     text-align: right;
     vertical-align: middle;
 }
+/* BUTTON BAR */
+.actions {
+    text-align: left;
+    overflow: hidden;
+    margin: 0 0 5px 0;
+    padding: 0 0 0 2px;
+}
+
+.actions a.btn-pri {
+    height: 22px;
+    background: url(../images/btn_pri.png) top left no-repeat;
+    display: block;
+    font-size: 11px;
+    color: #707070;
+    text-decoration: none;
+    font-weight: bold;
+    float: left;
+    margin: 0 3px 0 2px;
+}
+
+.actions a.btn-pri span {
+    margin: 0 0 0 16px;
+    _margin: 0 0 0 8px;
+    padding: 4px 16px 0 0;
+    background: url(../images/btn_pri.png) top right no-repeat;
+    display: block;
+    height: 18px;
+    cursor: pointer;
+    float: left;
+    white-space: nowrap;
+}

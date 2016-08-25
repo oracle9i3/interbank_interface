@@ -7,7 +7,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
-
 <html xmlns:a="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -19,23 +18,23 @@
     <%--response --%>
     <%--session--%>
     <%--<h1>${name}</h1>--%>
-    <%--<h2><% List<User> user=( List<User>)request.getAttribute("model"); %></h2>--%>
+    <h2><% List<User> user=( List<User>)request.getAttribute("model"); %></h2>
 
     <h1> Interbank interface </h1>
 
   <div class="main">
       <ul class = "tab-bar">
            <li class = "tab">
-           <a href="/index">
+           <a href="/java2/index">
                <span> Message files </span>
            </a>
            </li>
           <li class = "tab-act">
-              <a href="/index">
+              <a href="/java2/main">
                   <span> Contracts </span>
               </a>
           <li class = "tab">
-              <a href="/index">
+              <a href="/java2/index">
                   <span> Reports </span>
               </a>
           </li>
@@ -71,6 +70,7 @@
       /></th>
       <th style="cursor:pointer;"
           ></th>
+
         <c:forEach items="${model}" var="row" varStatus="status">
                 <tr>
                     <td><c:out value ="${row.userId} ${row.firstName} ${row.lastName}" /> </td>

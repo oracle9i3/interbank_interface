@@ -1,0 +1,967 @@
+body {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 20px 0px;
+    background: url(../images/bg_header.png) top left repeat-x;
+    height: 66px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:focus {
+    outline: none;
+}
+
+html {
+    min-height: 100%;
+    margin-bottom: 1px;
+}
+
+label {
+    font-size: 12px;
+}
+
+div {
+    font-size: 12px;
+}
+
+input {
+    font-size: 12px;
+}
+
+select {
+    font-size: 12px;
+}
+
+img {
+    border: 0;
+}
+
+form {
+    margin: 0px;
+    padding: 0px;
+}
+
+input, textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.ico {
+    cursor: pointer;
+    /*display: inline-block;*/
+    vertical-align: text-bottom;
+}
+
+a {
+    color: #57868f;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #0c5361;
+    text-decoration: none;
+}
+
+.clear1 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 1px;
+}
+
+.clear3 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 3px;
+}
+
+.clear5 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 5px;
+}
+
+.clear10 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 10px;
+}
+
+.clear15 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 15px;
+}
+
+.clear20 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 20px;
+}
+
+.clear25 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 25px;
+}
+
+.clear30 {
+    line-height: 0px;
+    font-size: 1px;
+    clear: both;
+    height: 30px;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #ad3333;
+    padding: 0 0 0 3px;
+    margin: 0px 0 10px 0;
+}
+
+h2 {
+}
+
+h3 {
+    font-size: 12px;
+    margin: 5px 4px 3px 4px;
+    color: #0c5361;
+}
+
+/* HEADER STYLES */
+.header {
+    height: 66px;
+    background: url(../images/bg_header_or.png) bottom left no-repeat;
+    overflow: hidden;
+}
+
+.header h1 {
+    padding: 0px;
+}
+
+.header h1 a {
+    display: block;
+    background: url(../images/main_logo.jpg) top left no-repeat;
+    width: 180px;
+    height: 39px;
+    text-indent: -9999px;
+    margin: 8px 0 0 18px;
+}
+
+/* //HEADER STYLES */
+
+/* GLOBAL ERROR & MESSAGES */
+.glob-err {
+    border: 1px solid #f5b3b4;
+    background: #ffd7d6 url(../images/bg_err_msg.png) top left repeat-x;
+    margin: 0 0 10px 0;
+    padding: 5px 10px 5px 10px;
+    color: #e22c2c;
+    font-size: 12px;
+}
+
+.glob-err a {
+    color: #d22c2c;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.glob-msg {
+    border: 1px solid #ffe69a;
+    background: #fff2c8 url(../images/bg_msg.png) top left repeat-x;
+    margin: 0 0 10px 0;
+    padding: 5px 10px 5px 10px;
+    color: #db7c00;
+    font-size: 12px;
+}
+
+.glob-succ {
+    border: 1px solid #adc787;
+    background: #deeec7 url(../images/bg_succ_msg.png) top left repeat-x;
+    margin: 0 0 10px 0;
+    padding: 5px 10px 5px 10px;
+    color: #418615;
+    font-size: 12px;
+}
+
+/* //GLOBAL ERROR & MESSAGES */
+
+/* FIELD LEVEL ERROR & MESSAGES */
+.field-err {
+    color: #e22c2c;
+    font-size: 11px;
+    padding-left: 5px;
+}
+
+/* //FIELD LEVEL ERROR & MESSAGES */
+
+.main {
+    margin: 25px 20px 30px 20px;
+    border: none;
+}
+
+/* NAVIGATION TABS */
+ul.tab-bar {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background: url(../images/border_blue.png) bottom left repeat-x;
+    min-width: 940px;
+}
+
+ul.tab-bar li.tab {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul.tab-bar li.tab a {
+    display: block;
+    float: left;
+    border-top: 2px solid #80a6ad;
+    border-bottom: 1px solid #c6d7da;
+    margin: 1px 1px 0 0;
+    text-align: center;
+    background: #e7eff7;
+    color: #336666;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+ul.tab-bar li.tab a span {
+    display: block;
+    border-bottom: 1px solid #ffffff;
+    padding: 10px 30px 9px 30px;
+}
+
+ul.tab-bar li.tab-act {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+ul.tab-bar li.tab-act a {
+    display: block;
+    float: left;
+    border-top: 4px solid #ff6600;
+    text-align: center;
+    background: #ffffff;
+    color: #ff6600;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0px 1px 0 0;
+}
+
+ul.tab-bar li.tab-act a span {
+    display: block;
+    padding: 10px 30px 10px 30px;
+    border-left: 1px solid #c6d7da;
+    border-right: 1px solid #c6d7da;
+}
+
+/* //NAVIGATION TABS */
+
+.tabcont {
+    border-right: 1px solid #c6d7da;
+    border-bottom: 1px solid #c6d7da;
+    border-left: 1px solid #c6d7da;
+    border-top: 0px;
+    min-width: 906px;
+    padding: 23px 17px 17px 17px;
+    overflow: hidden;
+}
+
+/* BOX TYPE 1 */
+.box1 {
+    border: 1px solid #80a6ad;
+}
+
+.box1 .head {
+    background: #80a6ad;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 7px 3px 7px;
+}
+
+.box1 .body {
+    padding: 9px 13px 9px 13px;
+}
+
+/* //BOX TYPE 1 */
+
+/* BOX TYPE 2 (without padding) */
+.box2 {
+    border: 1px solid #0c5361;
+}
+
+.box2 .head {
+    background: #0c5361;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 7px 3px 7px;
+}
+
+.box2 .body {
+    padding: 5px;
+}
+
+/* //BOX TYPE 2 */
+
+/* FILTER TABLE */
+.box1 .body table.filtertable th {
+    padding: 0 1px 1px 4px;
+    font-size: 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: bottom;
+    color: #636363;
+}
+
+.box1 .body table.filtertable td {
+    padding: 0 1px 0 3px;
+}
+
+/* //FILTER TABLE */
+
+th.tabletitle {
+    background: none;
+    font-size: 12px;
+    margin: 5px 4px 3px 4px;
+    color: #0c5361;
+}
+
+/* DATA TABLE 1 */
+.datatable {
+    border: 1px solid #c6d7da;
+    padding: 1px;
+    font-size: 12px;
+}
+
+.datatable table th {
+    background: #80a6ad;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: left;
+    padding: 3px 3px 3px 3px;
+}
+
+.datatable table td {
+    background: #e7eff7;
+    border-top: 1px solid #ffffff;
+    padding: 1px 3px 1px 3px;
+    vertical-align: middle;
+}
+
+.datatable table tr.even td {
+    background: #f5faff;
+    vertical-align: middle;
+}
+
+.datatable table tr.error td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+.datatable table tr.errorfixed td {
+    background: #ffcc66;
+    vertical-align: middle;
+}
+
+.datatable table tr.errorpassive td {
+    background: #ffffcc;
+    vertical-align: middle;
+}
+
+.datatable table td.action {
+    text-align: right;
+    vertical-align: middle;
+}
+
+.datatable table td.action a.bttn {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.datatable table td.action a.bttn span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #707070;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* //DATA TABLE 1 */
+
+/* DATA TABLE 2 */
+.datatable2 {
+    border: 1px solid #80a6ad;
+    padding: 1px;
+    font-size: 12px;
+}
+
+.datatable2 table {
+    border-collapse: collapse;
+}
+
+.datatable2 th {
+    background: #80a6ad;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: left;
+    padding: 3px 3px 3px 3px;
+}
+
+.datatable2 td {
+    background: #e7eff7;
+    border-top: 1px solid #ffffff;
+    padding: 1px 3px 1px 3px;
+    vertical-align: middle;
+}
+
+.datatable2 tr.even td {
+    background: #f5faff;
+    vertical-align: middle;
+}
+
+.datatable2 tr.error td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+.datatable2 tr.deleted td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+/*.datatable2 tr.manual td { background: #C5EAEC; }*/
+.datatable2 td.action {
+    text-align: right;
+    vertical-align: middle;
+}
+
+.datatable2 td.action a.bttn {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.datatable2 td.action a.bttn span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #707070;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.datatable2 td.action a.bttndisabled {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+.datatable2 td.action a.bttndisabled span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #C0C0C0;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* //DATA TABLE 2 */
+
+/* DATA TABLE 3 */
+.datatable3 {
+    border: 1px solid #80a6ad;
+    padding: 1px;
+    font-size: 12px;
+}
+
+.datatable3 table {
+    border-collapse: collapse;
+}
+
+.datatable3 th {
+    background: #80a6ad;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: left;
+    padding: 3px 3px 3px 3px;
+}
+
+.datatable3 td {
+    background: #ffffff;
+    padding: 1px 3px 1px 3px;
+    vertical-align: middle;
+}
+
+.datatable3 tr.even td {
+    background: #f5faff;
+    vertical-align: middle;
+}
+
+.datatable3 tr.error td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+.datatable3 tr.deleted td {
+    background: #ffcecd;
+    vertical-align: middle;
+}
+
+/*.datatable3 tr.manual td { background: #C5EAEC; }*/
+.datatable3 td.action {
+    text-align: right;
+    vertical-align: middle;
+}
+
+a.bttn {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+a.bttn span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #707070;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+a.bttndisabled {
+    display: block;
+    height: 20px;
+    margin: 1px 0 1px 0;
+    background: url(../images/btn_pri2.png) top left no-repeat;
+    float: right;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+a.bttndisabled span {
+    display: block;
+    height: 17px;
+    background: url(../images/btn_pri2.png) top right no-repeat;
+    float: left;
+    margin: 0 0 0 15px;
+    padding: 3px 15px 0 0;
+    cursor: pointer;
+    color: #C0C0C0;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.datatable3 td.editedField {
+    background: #e7eff7;
+    vertical-align: middle;
+}
+
+/* //DATA TABLE 3 */
+
+/* FORM TABLE */
+.box1 .body table.formtable {
+    font-size: 12px;
+}
+
+.box1 .body table.formtable th {
+    padding: 6px 1px 3px 4px;
+    font-size: 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: top;
+    color: #636363;
+}
+
+.box1 .body table.formtable td.txt {
+    padding: 6px 1px 3px 4px;
+}
+
+.box1 .body table.formtable td {
+    padding: 3px 1px 3px 3px;
+}
+
+/* //FORM TABLE */
+
+table.formtable tr.none:hover {
+    background-color: #fafafa;
+}
+
+table.formtable tr.editedField:hover {
+    background-color: #e1e9f0;
+}
+
+/* BUTTON BAR */
+.actions {
+    text-align: left;
+    overflow: hidden;
+    margin: 0 0 5px 0;
+    padding: 0 0 0 2px;
+}
+
+.actions a.btn-pri {
+    height: 22px;
+    background: url(../images/btn_pri.png) top left no-repeat;
+    display: block;
+    font-size: 11px;
+    color: #707070;
+    text-decoration: none;
+    font-weight: bold;
+    float: left;
+    margin: 0 3px 0 2px;
+}
+
+.actions a.btn-pri span {
+    margin: 0 0 0 16px;
+    _margin: 0 0 0 8px;
+    padding: 4px 16px 0 0;
+    background: url(../images/btn_pri.png) top right no-repeat;
+    display: block;
+    height: 18px;
+    cursor: pointer;
+    float: left;
+    white-space: nowrap;
+}
+
+/* //BUTTON BAR */
+
+/* TABLECOUNT */
+.tablecount {
+    float: left;
+    font-size: 12px;
+    color: #929292;
+    margin: 14px 0 0 10px;
+}
+
+/* //TABLECOUNT */
+
+.navigator {
+    overflow: hidden;
+    height: 32px;
+}
+
+/* PAGER */
+ul.pager {
+    float: right;
+    font-size: 12px;
+    margin: 10px 10px 0 0;
+    padding: 0px;
+}
+
+ul.pager li {
+    display: inline;
+    float: left;
+}
+
+ul.pager li.nolink {
+    display: block;
+    background: #ffffff;
+    border: 1px solid #80a6ad;
+    width: 20px;
+    height: 17px;
+    text-align: center;
+    margin: 0 3px 0 0;
+    text-decoration: none;
+    color: #0c5361;
+    padding: 3px 0 0 0;
+}
+
+ul.pager li a {
+    display: block;
+    background: #ffffff;
+    border: 1px solid #80a6ad;
+    width: 20px;
+    height: 17px;
+    text-align: center;
+    margin: 0 3px 0 0;
+    text-decoration: none;
+    color: #0c5361;
+    padding: 3px 0 0 0;
+}
+
+ul.pager li a:hover {
+    display: block;
+    background: #e7eff7;
+    border: 1px solid #80a6ad;
+    width: 20px;
+    height: 17px;
+    text-align: center;
+    margin: 0 3px 0 0;
+    text-decoration: none;
+    color: #0c5361;
+    padding: 3px 0 0 0;
+}
+
+ul.pager li a.navbttn {
+    display: block;
+    background: #0c5361;
+    border: 1px solid #0c5361;
+    height: 20px;
+    text-align: center;
+    margin: 0 3px 0 0;
+    text-decoration: none;
+    color: #0c5361;
+    padding: 0 0 0 0;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px
+}
+
+ul.pager li a.navbttn:hover {
+    display: block;
+    background: #0c5361;
+    border: 1px solid #0c5361;
+    height: 20px;
+    text-align: center;
+    margin: 0 3px 0 0;
+    text-decoration: none;
+    color: #0c5361;
+    padding: 0 0 0 0;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px
+}
+
+ul.pager li a.navbttn-last {
+    display: block;
+    background: #0c5361;
+    border: 1px solid #0c5361;
+    height: 20px;
+    text-align: center;
+    margin: 0 0px 0 0;
+    text-decoration: none;
+    color: #0c5361;
+    padding: 0 0 0 0;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+ul.pager li a.navbttn-last:hover {
+    display: block;
+    background: #0c5361;
+    border: 1px solid #0c5361;
+    height: 20px;
+    text-align: center;
+    margin: 0 0px 0 0;
+    text-decoration: none;
+    color: #0c5361;
+    padding: 0 0 0 0;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+ul.pager li a.act {
+    background: #80a6ad;
+    color: #ffffff;
+}
+
+/* //PAGER */
+
+/* TOOLTIP STYLES */
+a.tt {
+    position: relative;
+    z-index: 24;
+    color: #3CA3FF;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: top;
+}
+
+a.tt span {
+    display: none;
+}
+
+/*background:; ie hack, something must be changed in a for ie to execute it*/
+a.tt:hover {
+    z-index: 25;
+    color: #aaaaff;
+    /*background:;*/
+}
+
+a.tt:hover span.tooltip {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    padding: 15px 0 0 0;
+    width: 185px;
+    color: #993300;
+    text-align: center;
+}
+
+a.tt:hover span.top {
+    display: block;
+    padding: 12px 0 0 0;
+    background: url(../images/tooltip_arrow.png) bottom left no-repeat;
+}
+
+a.tt:hover span.middle {
+    display: block;
+    padding: 5px 8px 0 8px;
+    background: #faecc1;
+    border-right: 1px solid #dba910;
+    font-size: 11px;
+    color: #363636;
+    font-weight: normal;
+    text-align: left;
+}
+
+a.tt:hover span.bottom {
+    display: block;
+    padding: 0px 8px 5px 0;
+    color: #548912;
+    background: #faecc1;
+    border-right: 1px solid #dba910;
+    border-bottom: 1px solid #dba910;
+}
+
+/* //TOOLTIP STYLES */
+
+/* //FIELDS */
+.editedField {
+    background: #e7eff7;
+}
+
+/* //FIELDS */
+
+.footer {
+    text-align: center;
+}
+
+table.form {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    border-spacing: 0;
+}
+
+.form.condensed {
+    width: inherit;
+}
+
+td.control {
+    padding: 0;
+    vertical-align: top;
+}
+
+.control .control-label {
+    display: block;
+    padding: 0 1px 1px 4px;
+    font-size: 12px;
+    text-align: left;
+    font-weight: normal;
+    vertical-align: bottom;
+    color: #636363;
+}
+
+.form-row .control-label {
+    padding: 6px 1px 3px 4px;
+    font-size: 12px;
+    text-align: left; font-weight: bold;
+    vertical-align: top;
+    color: #636363;
+}
+
+.control .control-body {
+    display: block;
+    padding: 0 1px 0 3px;
+}
+
+.control-errors {
+    color: #e22c2c;
+    font-size: 11px;
+}
+
+.control .control-errors {
+    display: block;
+    padding-left: 5px;
+}
+
+.control-body .control-errors {
+    padding-left: 2px;
+}
+
+div.inline {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.contract-form th.control-label {
+    width: 150px;
+}
+
+.unsettled-balance-form th.control-label {
+    width: 25%;
+}
+
+.add-unsettled-balance-form th.control-label {
+    width: 25%;
+}
+
+tr.form-row.none:hover {
+    background-color: #fafafa;
+}
+
+tr.form-row.editedField:hover {
+    background-color: #e1e9f0;
+}

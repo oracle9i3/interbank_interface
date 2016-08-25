@@ -7,7 +7,9 @@ import java.util.List;
 /**
  * Created by Svetlana Titova on 17.08.2016.
  */
+
 public interface CustomerDAO {
 
     List<Customer> getAll() throws DBException;
+
 }

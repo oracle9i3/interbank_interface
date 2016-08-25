@@ -2,12 +2,12 @@ package lv.javaguru.java2.domain;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Svetlana Titova on 17.08.2016.
  */
 public class Customer {
-
 
    private Integer customer_id;
    private Integer store_id;
@@ -18,6 +18,8 @@ public class Customer {
    private int active;
    private Date create_date;
    private Timestamp last_update;
+
+    private List<Payment> payments;
 
     public Integer getCustomer_id() {
         return customer_id;

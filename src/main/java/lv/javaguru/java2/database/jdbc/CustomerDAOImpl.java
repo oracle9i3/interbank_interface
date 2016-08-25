@@ -2,6 +2,7 @@ package lv.javaguru.java2.database.jdbc;
 import lv.javaguru.java2.database.CustomerDAO;
 import lv.javaguru.java2.database.DBException;
 import lv.javaguru.java2.domain.Customer;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by Svetlana Titova on 17.08.2016.
  */
+@Component
 public class CustomerDAOImpl extends DAOImpl implements CustomerDAO {
     @Override
     public List<Customer> getAll() throws DBException {

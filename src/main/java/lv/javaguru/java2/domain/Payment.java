@@ -7,6 +7,8 @@ import java.util.Date;
  * Created by Svetlana Titova on 18.08.2016.
  */
 public class Payment {
+
+
     public int getPayment_id() {
         return payment_id;
     }
