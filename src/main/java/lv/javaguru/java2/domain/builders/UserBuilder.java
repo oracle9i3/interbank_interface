@@ -4,7 +4,7 @@ import lv.javaguru.java2.domain.User;
 
 public class UserBuilder {
 
-    private Long userId;
+    private Integer userId;
     private String firstName;
     private String lastName;
 
@@ -23,7 +23,7 @@ public class UserBuilder {
         return user;
     }
 
-    public UserBuilder withId(Long userId) {
+    public UserBuilder withId(Integer userId) {
         this.userId = userId;
         return this;
     }
