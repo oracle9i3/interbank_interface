@@ -1,4 +1,5 @@
 <%@ page import="lv.javaguru.java2.servlet.mvc.CustomerListController" %>
+<%@ page import="lv.javaguru.java2.domain.PageInfo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
@@ -207,14 +208,14 @@
      <u1 class="pager" >
 
      <li>
-         Page <%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getCurrentPage()%>
-         <a class="navbttn-first" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getFirstPageURI()%>")'> First page</a>
+         Page <%=((PageInfo)request.getAttribute("pageInfo")).getCurrentPage()%>
+         <a class="navbttn-first" href="#" onclick='nextPage("<%=((PageInfo)request.getAttribute("pageInfo")).getFirstPageURI()%>")'> First page</a>
 
-         <a class="navbttn" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getPrevPageURI()%>")'> << </a>
+         <a class="navbttn" href="#" onclick='nextPage("<%=((PageInfo)request.getAttribute("pageInfo")).getPrevPageURI()%>")'> << </a>
 
-         <a class="navbttn" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getNextPageURI()%>")'> >> </a>
+         <a class="navbttn" href="#" onclick='nextPage("<%=((PageInfo)request.getAttribute("pageInfo")).getNextPageURI()%>")'> >> </a>
 
-         <a class="navbttn-last" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getLastPageURI()%>")'> Last page </a>
+         <a class="navbttn-last" href="#" onclick='nextPage("<%=((PageInfo)request.getAttribute("pageInfo")).getLastPageURI()%>")'> Last page </a>
      </li>
 
      </u1>
