@@ -50,7 +50,7 @@
         %>
 
             <tr>
-                <td><%=userRow.getUserId()+" "+userRow.getFirstName()+" "+userRow.getLastName() %></td>
+                <%--<td><%=userRow.getUserId()+" "+userRow.getFirstName()+" "+userRow.getLastName() %></td>--%>
                 <%--<td><%=userRow.getFirstName()%></td>--%>
                 <%--<td><c:out value ="${model}" /> </td>--%>
 

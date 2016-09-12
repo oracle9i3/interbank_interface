@@ -1,7 +1,6 @@
+<%@ page import="lv.javaguru.java2.domain.Customer" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page import="lv.javaguru.java2.domain.Customer" %>
-<%@ page import="lv.javaguru.java2.domain.Payment" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -18,20 +17,21 @@
 </head>
 <body>
 <div class="header">
-<h1> List of payments</h1>
-
+    <%Customer customer=(Customer)request.getAttribute("customerName"); %>
+<h1>List of payments for customerId=<%=customer.getCustomer_id()%></h1>
+<h1> <%=customer.getFirst_name() + ' '+ customer.getLast_name() %></h1>
 </div>
     <div class="clear1"> </div>
     <div class="datatable">
     <table id= "paymentsList" width="100%" border="0" cellpadding="0" cellspacing="0">
       <thead >
             <tr>
-                <th width="20" nowrap="nowrap" style="cursor:pointer;"> Payment id </th>
-                <th>Customer Id</th>
+                <th>Payment id</th>
+                <%--<th>Customer Id</th>--%>
                 <th>Amount</th>
                 <th>Payment date</th>
                 <th>Last update</th>
-                <th colspan="5"></th>
+                <th colspan="4"></th>
             </tr>
             </thead>
         <%--<th width="20" nowrap="nowrap">--%>
@@ -44,21 +44,39 @@
                 <c:when test="${(status.index)%2 eq 0 }">
             <tr class="even">
                 <td><c:out value ="${row.payment_id}" /> </td>
-                <td><c:out value ="${row.customer_id}" /> </td>
+                <%--<td><c:out value ="${row.customer_id}" /> </td>--%>
                 <td><c:out value ="${row.amount}" /> </td>
                 <td><c:out value ="${row.payment_date}" /> </td>
                 <td><c:out value ="${row.last_update}" /> </td>
-
+                <td nowrap="nowrap" class="action">
+                    <a href="./payments?payment_id=${row.payment_id}" class="bttn">
+                        <span> Edit payment </span>
+                    </a>
+                </td>
+                <td nowrap="nowrap" class="action">
+                    <a href="./payments?payment_id=${row.payment_id}" class="bttn">
+                        <span> Delete payment </span>
+                    </a>
+                </td>
             </tr>
                 </c:when>
             <c:otherwise>
                 <tr>
                     <td><c:out value ="${row.payment_id}" /> </td>
-                    <td><c:out value ="${row.customer_id}" /> </td>
+                    <%--<td><c:out value ="${row.customer_id}" /> </td>--%>
                     <td><c:out value ="${row.amount}" /> </td>
                     <td><c:out value ="${row.payment_date}" /> </td>
                     <td><c:out value ="${row.last_update}" /> </td>
-
+                    <td nowrap="nowrap" class="action">
+                      <a href="./payments?payment_id=${row.payment_id}" class="bttn">
+                        <span> Edit payment </span>
+                      </a>
+                    </td>
+                    <td nowrap="nowrap" class="action">
+                        <a href="./payments?payment_id=${row.payment_id}" class="bttn">
+                            <span> Delete payment </span>
+                        </a>
+                    </td>
                 </tr>
             </c:otherwise>
             </c:choose>

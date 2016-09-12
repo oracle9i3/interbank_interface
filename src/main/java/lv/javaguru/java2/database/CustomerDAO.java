@@ -11,5 +11,6 @@ import java.util.List;
 public interface CustomerDAO {
 
     List<Customer> getAll() throws DBException;
-
+    List<Customer> getRange(int startRow, int rowCount) throws DBException;
+    Customer getCustomerById(int id) throws DBException;
 }

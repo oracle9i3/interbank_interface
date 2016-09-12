@@ -1,12 +1,16 @@
 package lv.javaguru.java2.domain;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  * Created by Svetlana Titova on 18.08.2016.
  */
-public class Payment {
+@Entity
+@Table(name ="payment")
+public class Payment  {
 
 
     public int getPayment_id() {
@@ -17,17 +21,25 @@ public class Payment {
         this.payment_id = payment_id;
     }
 
-    private int payment_id;
+    @Id
+    @Column(name="payment_id", columnDefinition = "smallint")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer payment_id;
+
+
+   // @Version
+   // private long version;
+
+    @Column(name="customer_id", columnDefinition = "smallint")
+    private Integer customer_id;
 
     public int getCustomer_id() {
         return customer_id;
     }
 
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomer_id(int payment_customer_id) {
+        this.customer_id = payment_customer_id;
     }
-
-    private int customer_id;
 
     public int getStaff_id() {
         return staff_id;
@@ -37,6 +49,7 @@ public class Payment {
         this.staff_id = staff_id;
     }
 
+    @Column(name="staff_id", columnDefinition = "TINYINT")
     private int staff_id;
 
     public int getRental_id() {
@@ -47,15 +60,32 @@ public class Payment {
         this.rental_id = rental_id;
     }
 
-    private int rental_id ;
+    @Column(name="rental_id", columnDefinition="integer")
+    private Integer rental_id ;
 
-    public Float getAmount() {
+    @Column(name="amount", columnDefinition="decimal" ,precision=5)
+    private BigDecimal amount;
+
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinTable(name="customer", joinColumns = @JoinColumn(name = "customer_id"))
+//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id" ,nullable = false, insertable=false, updatable=false)
+//    private Customer customer;
+
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+
+//   public void setCustomers(Customer customers) {
+//    this.customer = customer;
+//   }
 
     @Override
     public boolean equals(Object o) {
@@ -86,7 +116,7 @@ public class Payment {
         return result;
     }
 
-    private Float  amount;
+
 
     public Date getPayment_date() {
         return payment_date;
@@ -96,6 +126,7 @@ public class Payment {
         this.payment_date = payment_date;
     }
 
+    @Column(name="payment_date")
     private Date payment_date;
 
     public Timestamp getLast_update() {
@@ -107,7 +138,6 @@ public class Payment {
     }
 
     private Timestamp last_update;
-
 
 
 }

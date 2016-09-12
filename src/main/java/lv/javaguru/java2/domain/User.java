@@ -3,18 +3,27 @@ package lv.javaguru.java2.domain;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name ="users")
 public class User {
 
-    private Long userId;
+    @Id
+    @Column(name="userId", columnDefinition = "intger")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer userId;
+    @Column(name="firstName",columnDefinition="char(32)")
     private String firstName;
+    @Column(name="lastName",columnDefinition="char(32)")
     private String lastName;
 
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

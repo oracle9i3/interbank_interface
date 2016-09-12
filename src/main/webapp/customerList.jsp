@@ -1,3 +1,4 @@
+<%@ page import="lv.javaguru.java2.servlet.mvc.CustomerListController" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
@@ -22,6 +23,12 @@
     <%--<link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">--%>
 </head>
 <body>
+<script>
+    function nextPage(link) {
+        window.location = link;
+    }
+ </script>
+
 <div class="header">
 <h2>  Interbank interface </h2>
 </div>
@@ -45,7 +52,77 @@
     </ul>
 </div>
 
+<%--<div class="clear20" ></div>--%>
 
+<h1>Customers list</h1>
+<div class="box1">
+    <div class="head">Filter</div>
+
+    <div class="body">
+        <%--<input id="customer_id" name="customer_id" value="0" > </input>--%>
+        <%--<input id="store_id" name="store_id" value="0" type="hidden"> </input>--%>
+        <%--<input id="first_name" name="first_name" value=" " > </input>--%>
+        <%--<input id="last_name" name="last_name" value=" " > </input>--%>
+
+        <table class="form condensed">
+            <tbody>
+            <tr class="form-row">
+                <td class="control">
+                    <span class="control-label"> Customer Id </span>
+                    <span class="control-body">
+                        <input id="customer_id" name="customer_id" style="width: 85px" value="599" type="text"> </input>
+                    </span>
+                </td>
+
+               <td class="control">
+                <span class="control-label"> First name </span>
+                <span class="control-body"></span>
+                <input id="first_name" name="first_name" style="width: 175px" type="text"> </input>
+               </td>
+
+                <td class="control">
+                    <span class="control-label"> Last name </span>
+                    <span class="control-body"></span>
+                    <input id="last_name" name="last_name" style="width: 175px" type="text"> </input>
+                </td>
+
+            </tr>
+            <tr class="form-row">
+                <td class="control">
+                    <span class="control-label"> Email </span>
+                    <span class="control-body"></span>
+                    <input id="email" name="email" style="width: 175px" type="text"> </input>
+                </td>
+
+                <td class="control">
+                    <span class="control-label"> Last update </span>
+                    <span class="control-body"></span>
+                    <input id="last_update" name="last_update" style="width: 175px" type="text"> </input>
+                </td>
+
+                <td class="control">
+                    <span class="control-label"> Status </span>
+                    <span class="control-body">
+                    <select  id="active" name="active" style="width: 85px" >
+                     <option value="ALL" selected="selected">All</option>
+                     <option value="0">Active</option>
+                     <option value="1">Passive</option>
+                     </select>
+                    </span>
+                </td>
+            </tr>
+
+            <%--<div class="clear10"></div>--%>
+            <div class="actions">
+                <a class="btn-pri" href="#" onclick="">
+                    <span>Show</span>
+                </a>
+            </div>
+
+            </tbody>
+
+        </table>
+    </div>
 <div class="clear1"> </div>
 <div class="datatable">
 <table id= "customersList" width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -119,23 +196,29 @@
     </td>
 </tr>
 
-</div>
     </c:otherwise>
     </c:choose>
 
-
     </c:forEach>
-
-
+</table>
  <div class="navigator">
-     <div class="tablecount">Records 1-26 </div>
-     <u1 class="pager">
-     <li>
-         <a class="navbttn" href="#"> << </a>
-     </li>
-      <a class="act" href="#"> 1 </a>
-     </u1>
+<div class="footer">
+     <div class="tablecount"></div>
+     <u1 class="pager" >
 
+     <li>
+         Page <%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getCurrentPage()%>
+         <a class="navbttn-first" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getFirstPageURI()%>")'> First page</a>
+
+         <a class="navbttn" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getPrevPageURI()%>")'> << </a>
+
+         <a class="navbttn" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getNextPageURI()%>")'> >> </a>
+
+         <a class="navbttn-last" href="#" onclick='nextPage("<%=((CustomerListController.PageInfo)request.getAttribute("pageInfo")).getLastPageURI()%>")'> Last page </a>
+     </li>
+
+     </u1>
  </div>
 </body>
+
 </html>

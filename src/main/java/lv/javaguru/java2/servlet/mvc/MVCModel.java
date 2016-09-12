@@ -5,10 +5,16 @@ public class MVCModel {
     private Object data; // tip dannih zaranee ne izvesten po etomu object
     private String viewName; // nazvanie UI componenta kotorij budet prorisovivat' model
 
+
     public MVCModel(Object data, String viewName) {
         this.data = data;
         this.viewName = viewName;
     }
+
+//    public MVCModel(String view){
+//        this.viewName = view;
+//        this.data = new Object();
+//    }
 
     public Object getData() {
         return data;
@@ -17,4 +23,6 @@ public class MVCModel {
     public String getViewName() {
         return viewName;
     }
+
+
 }

@@ -14,7 +14,8 @@ import java.util.List;
 /**
  * Created by Svetlana Titova on 18.08.2016.
  */
-@Component
+
+@Component("JDBC_PaymentDAO")
 public class PaymentDAOImpl  extends DAOImpl implements PaymentDAO{
 
     public  List<Payment>  getAllPaymentByCustId(int id) throws DBException {
@@ -30,8 +31,8 @@ public class PaymentDAOImpl  extends DAOImpl implements PaymentDAO{
             while (resultSet.next()) {
                 Payment payment = new Payment();
                 payment.setPayment_id(resultSet.getInt("payment_id"));
-                payment.setPayment_id(resultSet.getInt("customer_id"));
-                payment.setAmount(resultSet.getFloat("amount"));
+                payment.setCustomer_id(resultSet.getInt("customer_id"));
+                payment.setAmount(resultSet.getBigDecimal("amount"));
                 payment.setLast_update(resultSet.getTimestamp("last_update"));
                 payment.setPayment_date(resultSet.getDate("payment_date"));
                 payments.add(payment);
