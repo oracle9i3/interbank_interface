@@ -26,6 +26,10 @@ public class PageInfo {
 
     public String getLastPageURI() { return _lastPage; }
 
+    public PageInfo(){
+        super();
+    }
+
     public PageInfo(String firstPageURI,String lastPageURI ,String nextPageURI,String prevPageURI, String currentPage) {
 
         _firstPage = firstPageURI;
