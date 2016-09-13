@@ -2,6 +2,7 @@
 <%@ page import="lv.javaguru.java2.domain.PageInfo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
 <%--<%@ taglib prefix="myl" tagdir="/WEB-INF/tags" %>--%>
 
@@ -23,6 +24,7 @@
     <link href="${pageContext.request.contextPath}/styles/common_styles.css" rel="stylesheet" type="text/css" />
     <%--<link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">--%>
 </head>
+
 <body>
 <script>
     function nextPage(link) {
@@ -130,9 +132,9 @@
     <thead >
 
 <tr>
-    <th width="20" nowrap="nowrap">
-     Customer Id <input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);" />
-    </th>
+    <th nowrap="nowrap"><input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);" /> </th>
+    <th  nowrap="nowrap" >Customer Id </th>
+
     <th style="cursor:pointer;">Name</th>
     <th style="cursor:pointer;">Surname </th>
     <th width="20" style="cursor:pointer;" > Email </th>
@@ -141,10 +143,13 @@
     </thead >
 
     <tbody>
+    <tr>
     <c:forEach items="${model}" var="row" varStatus="status">
+    <c:set var="checkValue" value="${row.customer_id}"/>
         <c:choose>
         <c:when test="${(status.index)%2 eq 0 }">
-        <tr class="even">
+        <input class="even">
+            <td> <input name="checked" value="${checkValue}" type="checkbox"> </input> </td>
             <td width="20"><c:out value ="${row.customer_id} " /> </td>
             <td><c:out value ="${row.first_name}" /> </td>
             <td><c:out value ="${row.last_name}" /> </td>
@@ -172,6 +177,7 @@
         </c:when>
         <c:otherwise>
 <tr>
+    <td><input  name="checked" value="${checkValue}" type="checkbox"> </input> </td>
     <td width="20"><c:out value ="${row.customer_id} " /> </td>
     <td><c:out value =" ${row.first_name}" /> </td>
     <td><c:out value ="${row.last_name}" /> </td>
@@ -201,6 +207,7 @@
     </c:choose>
 
     </c:forEach>
+    </tbody>
 </table>
  <div class="navigator">
 <div class="footer">
