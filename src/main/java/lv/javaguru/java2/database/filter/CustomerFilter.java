@@ -1,4 +1,4 @@
-package lv.javaguru.java2.database;
+package lv.javaguru.java2.database.filter;
 
 import lv.javaguru.java2.domain.PageInfo;
 
