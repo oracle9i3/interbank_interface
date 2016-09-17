@@ -30,6 +30,11 @@
     function nextPage(link) {
         window.location = link;
     }
+    function checkUncheckAll(theElement){
+        var $el=jQuery(theElement);
+        $el.closest('form').find('[type=checkbox][name!=checkall]').prop('checked',$el.prop('checked'));
+    }
+
  </script>
 
 <div class="header">
@@ -126,13 +131,16 @@
 
         </table>
     </div>
+    </div>
 <div class="clear1"> </div>
 <div class="datatable">
 <table id= "customersList" width="100%" border="0" cellpadding="0" cellspacing="0">
     <thead >
 
 <tr>
-    <th nowrap="nowrap"><input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);" /> </th>
+    <th nowrap="nowrap">
+       <input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);"/></input>
+    </th>
     <th  nowrap="nowrap" >Customer Id </th>
 
     <th style="cursor:pointer;">Name</th>
