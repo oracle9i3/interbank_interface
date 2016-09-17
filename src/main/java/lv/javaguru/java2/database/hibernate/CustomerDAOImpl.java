@@ -1,6 +1,7 @@
 package lv.javaguru.java2.database.hibernate;
 
 import lv.javaguru.java2.database.CustomerDAO;
+import lv.javaguru.java2.database.filter.CustomerFilter;
 import lv.javaguru.java2.database.DBException;
 import lv.javaguru.java2.domain.Customer;
 import org.hibernate.Session;
@@ -10,13 +11,16 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Svetlana Titova on 26.08.2016.
  */
+@Repository("ORM_CustomerDAO")
 @Component("ORM_CustomerDAO")
 @Transactional
 public class CustomerDAOImpl implements CustomerDAO {
@@ -75,5 +79,23 @@ public class CustomerDAOImpl implements CustomerDAO {
                // .addOrder(Order.asc("customer_id"))
                 .setResultTransformer(Transformers.aliasToBean(Customer.class)).list();
     }
+private String appendCondition(String filter , String condition){
+    if (filter==null ||"".equals(filter.trim())) {
+        filter = " WHERE " + condition + " ";
+    }
+        else
+        {filter=filter+" AND "+ condition+ " ";}
+    return filter;
+}
+
+private String createFilter(CustomerFilter customerFilter, Map<String,Object> params)
+{
+   String fs1="";
+    if (customerFilter != null && customerFilter.getCustomer_id()!=null) {
+        fs1 = appendCondition(fs1, " customer_id= :customer_id");
+        params.put("customer_id",customerFilter.getCustomer_id());
+    }
+   return fs1;
+}
 
 }
