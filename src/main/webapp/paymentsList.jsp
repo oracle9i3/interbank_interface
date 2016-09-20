@@ -49,6 +49,11 @@
                 <td><c:out value ="${row.payment_date}" /> </td>
                 <td><c:out value ="${row.last_update}" /> </td>
                 <td nowrap="nowrap" class="action">
+                    <a href="./addNewPayment?customer_id=${row.customer_id}" class="bttn">
+                        <span> Add payment </span>
+                    </a>
+                </td>
+                <td nowrap="nowrap" class="action">
                     <a href="./payments?payment_id=${row.payment_id}" class="bttn">
                         <span> Edit payment </span>
                     </a>
@@ -67,6 +72,11 @@
                     <td><c:out value ="${row.amount}" /> </td>
                     <td><c:out value ="${row.payment_date}" /> </td>
                     <td><c:out value ="${row.last_update}" /> </td>
+                    <td nowrap="nowrap" class="action">
+                        <a href="./addNewPayment?customer_id=${row.customer_id}" class="bttn">
+                            <span> Add payment </span>
+                        </a>
+                    </td>
                     <td nowrap="nowrap" class="action">
                       <a href="./payments?payment_id=${row.payment_id}" class="bttn">
                         <span> Edit payment </span>
