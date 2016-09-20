@@ -21,37 +21,38 @@ import java.util.List;
 /**
  * Created by Svetlana Titova on 18.08.2016.
  */
-//@RequestMapping("/payments")
+
 @Controller
-public class PaymentController
-{
+public class PaymentController {
     private PaymentDAO paymentDAO = new PaymentDAOImpl();
     @Autowired
     @Qualifier("ORM_CustomerDAO")
     private CustomerDAO customerDAO;
-    private Customer customer=null;
+    private Customer customer = null;
     HttpSession session;
 
-@RequestMapping(value = "/payments", method = {RequestMethod.GET, RequestMethod.POST})
-public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response) throws DBException {
+    @RequestMapping(value = "/payments", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView processRequest(HttpServletRequest request, HttpServletResponse response) throws DBException {
 
-    ModelAndView model  = new ModelAndView("paymentsList");
-    String id = request.getParameter("customer_id");
-    List<Payment> myList = null;
+        ModelAndView model = new ModelAndView("paymentsList");
+        String id = request.getParameter("customer_id");
+        List<Payment> myList = null;
 
-    session = request.getSession();
-      customer =  customerDAO.getCustomerById(Integer.parseInt(id));
+        session = request.getSession();
+        customer = customerDAO.getCustomerById(Integer.parseInt(id));
 
-    try{
-        myList =  paymentDAO.getAllPaymentByCustId(Integer.parseInt(id));
+        try {
+            myList = paymentDAO.getAllPaymentByCustId(Integer.parseInt(id));
 
-    } catch (DBException ex) {
+        } catch (DBException ex) {
 
+        }
+
+        model.addObject("model", myList);
+        model.addObject("customerName", customer);
+        return model;
     }
 
-    model.addObject("model", myList);
-    model.addObject("customerName",  customer);
-    return model;
-   }
+
 }
 
