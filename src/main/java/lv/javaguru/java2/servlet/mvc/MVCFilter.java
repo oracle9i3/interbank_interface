@@ -88,11 +88,11 @@ public class MVCFilter implements Filter {
             MVCModel model = controller.processRequest(req, resp);
 
             req.setAttribute("model", model.getData());
-            ServletContext context = req.getServletContext();
+            //ServletContext context = req.getServletContext();
             System.out.println("View: " + model.getViewName());
 
-            RequestDispatcher requestDispatcher = context.getRequestDispatcher(model.getViewName());
-            requestDispatcher.forward(req, resp);
+            //RequestDispatcher requestDispatcher = context.getRequestDispatcher(model.getViewName());
+           // requestDispatcher.forward(req, resp);
         }
         else filterChain.doFilter(request,response);
     }
