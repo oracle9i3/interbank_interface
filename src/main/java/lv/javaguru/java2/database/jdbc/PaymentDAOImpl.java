@@ -3,6 +3,9 @@ package lv.javaguru.java2.database.jdbc;
 import lv.javaguru.java2.database.DBException;
 import lv.javaguru.java2.database.PaymentDAO;
 import lv.javaguru.java2.domain.Payment;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
@@ -17,6 +20,8 @@ import java.util.List;
 
 @Component("JDBC_PaymentDAO")
 public class PaymentDAOImpl  extends DAOImpl implements PaymentDAO{
+    @Autowired
+    private SessionFactory sessionFactory;
 
     public  List<Payment>  getAllPaymentByCustId(int id) throws DBException {
         Connection connection = null;
@@ -46,7 +51,10 @@ public class PaymentDAOImpl  extends DAOImpl implements PaymentDAO{
             closeConnection(connection);
         }
     }
-
+    public void create(Payment product) throws DBException {
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(product);
+    }
 
 }
 

@@ -85,13 +85,13 @@
                <td class="control">
                 <span class="control-label"> First name </span>
                 <span class="control-body"></span>
-                <input id="first_name" name="first_name" style="width: 175px" type="text"> </input>
+                <input id="first_name" name="first_name" style="width: 170px" type="text"> </input>
                </td>
 
                 <td class="control">
                     <span class="control-label"> Last name </span>
                     <span class="control-body"></span>
-                    <input id="last_name" name="last_name" style="width: 175px" type="text"> </input>
+                    <input id="last_name" name="last_name" style="width: 170px" type="text"> </input>
                 </td>
 
             </tr>
@@ -99,13 +99,13 @@
                 <td class="control">
                     <span class="control-label"> Email </span>
                     <span class="control-body"></span>
-                    <input id="email" name="email" style="width: 175px" type="text"> </input>
+                    <input id="email" name="email" style="width: 165px" type="text"> </input>
                 </td>
 
                 <td class="control">
                     <span class="control-label"> Last update </span>
                     <span class="control-body"></span>
-                    <input id="last_update" name="last_update" style="width: 175px" type="text"> </input>
+                    <input id="last_update" name="last_update" style="width: 165px" type="text"> </input>
                 </td>
 
                 <td class="control">
@@ -156,7 +156,7 @@
     <c:set var="checkValue" value="${row.customer_id}"/>
         <c:choose>
         <c:when test="${(status.index)%2 eq 0 }">
-        <input class="even">
+        <tr class="even">
             <td> <input name="checked" value="${checkValue}" type="checkbox"> </input> </td>
             <td width="20"><c:out value ="${row.customer_id} " /> </td>
             <td><c:out value ="${row.first_name}" /> </td>

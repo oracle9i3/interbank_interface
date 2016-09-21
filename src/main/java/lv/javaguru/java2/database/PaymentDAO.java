@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface PaymentDAO {
     List<Payment> getAllPaymentByCustId(int id) throws DBException;
-
+    void create(Payment payment) throws DBException;
 }

@@ -24,6 +24,7 @@
     <div class="clear1"> </div>
     <div class="datatable">
     <table id= "paymentsList" width="100%" border="0" cellpadding="0" cellspacing="0">
+
       <thead >
             <tr>
                 <th>Payment id</th>
@@ -39,6 +40,7 @@
         <%--<th style="cursor:pointer;"></th>--%>
 
             <tbody>
+            <tr>
         <c:forEach items="${model}" var="row" varStatus="status">
             <c:choose>
                 <c:when test="${(status.index)%2 eq 0 }">
@@ -92,7 +94,7 @@
             </c:choose>
             </tbody>
         </c:forEach>
-
+        </tr>
        </div>
     </table>
 

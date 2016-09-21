@@ -1,9 +1,12 @@
 package lv.javaguru.java2.domain;
 
 import javax.persistence.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by Svetlana Titova on 18.08.2016.
@@ -30,6 +33,7 @@ public class Payment  {
    // @Version
    // private long version;
 
+   // @NotNull(message="customer_id is not defined")
     @Column(name="customer_id", columnDefinition = "smallint")
     private Integer customer_id;
 
@@ -49,6 +53,7 @@ public class Payment  {
         this.staff_id = staff_id;
     }
 
+    //@NotNull(message="staff_id is not defined")
     @Column(name="staff_id", columnDefinition = "TINYINT")
     private int staff_id;
 
@@ -60,9 +65,11 @@ public class Payment  {
         this.rental_id = rental_id;
     }
 
+    //@NotNull(message="rental_id is not defined")
     @Column(name="rental_id", columnDefinition="integer")
     private Integer rental_id ;
 
+    //@NotNull(message="amount is not defined")
     @Column(name="amount", columnDefinition="decimal" ,precision=5)
     private BigDecimal amount;
 
@@ -116,8 +123,6 @@ public class Payment  {
         return result;
     }
 
-
-
     public Date getPayment_date() {
         return payment_date;
     }
@@ -126,6 +131,7 @@ public class Payment  {
         this.payment_date = payment_date;
     }
 
+    //@NotNull(message="payment_date is not defined")
     @Column(name="payment_date")
     private Date payment_date;
 
@@ -137,7 +143,21 @@ public class Payment  {
         this.last_update = last_update;
     }
 
+   // @NotNull(message="last_update is not defined")
     private Timestamp last_update;
 
+    public static void validate(Object object, Validator validator) {
+        Set<ConstraintViolation<Object>> constraintViolations = validator
+                .validate(object);
+
+        System.out.println(object);
+        System.out.println(String.format("Кол-во ошибок: %d",
+                constraintViolations.size()));
+
+        for (ConstraintViolation<Object> cv : constraintViolations)
+            System.out.println(String.format(
+                    "Внимание, ошибка! property: [%s], value: [%s], message: [%s]",
+                    cv.getPropertyPath(), cv.getInvalidValue(), cv.getMessage()));
+    }
 
 }
