@@ -1,7 +1,7 @@
 <%@ page import="lv.javaguru.java2.domain.Customer" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Pro430
@@ -23,6 +23,7 @@
 </div>
     <div class="clear1"> </div>
     <div class="datatable">
+
     <table id= "paymentsList" width="100%" border="0" cellpadding="0" cellspacing="0">
 
       <thead >
@@ -35,12 +36,10 @@
                 <th colspan="4"></th>
             </tr>
             </thead>
-        <%--<th width="20" nowrap="nowrap">--%>
-            <%--<input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);"/></th>--%>
-        <%--<th style="cursor:pointer;"></th>--%>
 
             <tbody>
             <tr>
+
         <c:forEach items="${model}" var="row" varStatus="status">
             <c:choose>
                 <c:when test="${(status.index)%2 eq 0 }">
@@ -92,16 +91,21 @@
                 </tr>
             </c:otherwise>
             </c:choose>
-            </tbody>
+
+
         </c:forEach>
+        </tbody>
+        </table>
         </tr>
+
        </div>
-    </table>
+
 
 
     <a  href="main" class="bttn">
         <span>Back</span>
     </a>
+
 
 </body>
 </html>

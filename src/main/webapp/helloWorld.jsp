@@ -66,9 +66,9 @@
 <div class="clear1"> </div>
        <table id= "usersList" width="100%" border="0" cellpadding="0" cellspacing="0">
 
-     <th width="20" nowrap="nowrap">
-         <input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);"
-      /></th>
+     <%--<th width="20" nowrap="nowrap">--%>
+         <%--<input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);"--%>
+      <%--/></th>--%>
       <th style="cursor:pointer;"
           ></th>
 

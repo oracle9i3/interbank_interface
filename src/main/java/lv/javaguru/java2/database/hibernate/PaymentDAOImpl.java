@@ -13,10 +13,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -41,34 +37,7 @@ public class PaymentDAOImpl extends DAOImpl implements PaymentDAO {
     }
 
     public void create(Payment payment) throws DBException {
-        if (payment == null) {
-            return;
-        }
-
-        Connection connection = null;
-
-        try {
-            connection = getConnection();
-            PreparedStatement preparedStatement =
-                    connection.prepareStatement("insert into payment (customer_id, staff_id, rental_id, amount ,payment_date,last_update) values (?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, customer.getCustomer_id());
-            preparedStatement.setInt(2, 1/*payment.getStaff_id()*/);
-            preparedStatement.setInt(3, 1/*payment.getRental_id()*/);
-            preparedStatement.setBigDecimal(4, payment.getAmount());
-            preparedStatement.setDate(5,(Date)payment.getPayment_date());
-
-            preparedStatement.executeUpdate();
-            ResultSet rs = preparedStatement.getGeneratedKeys();
-                payment.setPayment_id(rs.getInt(1));
-                if (rs.next()){
-            }
-        } catch (Throwable e) {
-            System.out.println("Exception while execute PaymentDAOImpl.create()");
-            e.printStackTrace();
-            throw new DBException(e);
-        } finally {
-            closeConnection(connection);
-        }
-
+        Session session = sessionFactory.getCurrentSession();
+        session.persist(payment);
     }
 }

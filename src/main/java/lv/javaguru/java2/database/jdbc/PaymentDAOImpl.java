@@ -3,12 +3,12 @@ package lv.javaguru.java2.database.jdbc;
 import lv.javaguru.java2.database.DBException;
 import lv.javaguru.java2.database.PaymentDAO;
 import lv.javaguru.java2.domain.Payment;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -51,10 +51,42 @@ public class PaymentDAOImpl  extends DAOImpl implements PaymentDAO{
             closeConnection(connection);
         }
     }
-    public void create(Payment product) throws DBException {
-        Session session = sessionFactory.getCurrentSession();
-        session.persist(product);
+
+    public void create(Payment payment) throws DBException {
+        if (payment == null) {
+            return;
+        }
+
+        Connection connection = null;
+
+        try {
+            connection = getConnection();
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("insert into payment (customer_id, staff_id, rental_id, amount ,payment_date,last_update) values (?, ?, ?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, payment.getCustomer_id());
+            preparedStatement.setInt(2, payment.getStaff_id());
+            preparedStatement.setInt(3, payment.getRental_id());
+            preparedStatement.setBigDecimal(4, payment.getAmount());
+            Date myDate = new java.sql.Date(payment.getPayment_date().getTime());
+            preparedStatement.setDate(5,myDate);
+            preparedStatement.setTimestamp(6,payment.getLast_update());
+
+            preparedStatement.executeUpdate();
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+
+            if (rs.next()){
+                payment.setPayment_id(rs.getInt(1));
+            }
+        } catch (Throwable e) {
+            System.out.println("Exception while execute PaymentDAOImpl.create()");
+            e.printStackTrace();
+            throw new DBException(e);
+        } finally {
+            closeConnection(connection);
+        }
+
     }
+
 
 }
 

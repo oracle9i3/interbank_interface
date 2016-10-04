@@ -5,17 +5,22 @@ import lv.javaguru.java2.database.DBException;
 import lv.javaguru.java2.domain.Customer;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.sql.Types.NULL;
+
 /**
  * Created by Svetlana Titova on 17.08.2016.
  */
 @Component("JDBC_CustomerDAO")
+
 public class CustomerDAOImpl extends DAOImpl implements CustomerDAO {
+
     @Override
     public List<Customer> getAll() throws DBException {
         List<Customer> customers = new ArrayList<Customer>();
@@ -46,13 +51,26 @@ public class CustomerDAOImpl extends DAOImpl implements CustomerDAO {
         return customers;
     }
     @Override
-    public List<Customer> getRange(int startRow, int rowCount) throws DBException {
+    public List<Customer> getRange(int startRow, int rowCount ,HttpServletRequest request) throws DBException {
         List<Customer> customers = new ArrayList<Customer>();
+
+
         Connection connection = null;
+        //http://localhost:8080/java2/main?id=aa?first_name=bb
+        String id = request.getParameter("id");
+        String first_name = request.getParameter("first_name");
+
+        String sqlString="SELECT * FROM customer ";
+        if (!id.equals(NULL)
+            )
+        {
+            sqlString=sqlString+" WHERE customer_id="+id;
+        }
+
         try {
             connection = getConnection();
             PreparedStatement preparedStatement
-                    = connection.prepareStatement("SELECT * FROM customer ORDER BY customer_id "
+                    = connection.prepareStatement(sqlString
                     + "LIMIT " + rowCount + " OFFSET " + startRow);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -109,4 +127,5 @@ public class CustomerDAOImpl extends DAOImpl implements CustomerDAO {
             closeConnection(connection);
         }
     }
+
 }

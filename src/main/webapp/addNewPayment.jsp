@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="lv.javaguru.java2.domain.Payment" %>
 <%@ page import="lv.javaguru.java2.domain.Staff" %>
 <%@ page import="java.util.List" %><%--
@@ -14,32 +15,31 @@
     <link href="${pageContext.request.contextPath}/styles/common_styles.css" rel="stylesheet" type="text/css" />
     <% Payment payment=(Payment)request.getAttribute("newEmptyPayment"); %>
     <% List<Staff> staff =(List<Staff>)request.getAttribute("staff_list");%>
-    <title>Add New Payment ></title>
+    <% Integer customer_id= payment.getCustomer_id();%>
+    <title>Add New Payment</title>
 
     <%--<p> New Amount <%=payment.getAmount()%> </p>--%>
     <%--<p><%=(List<Staff>)request.getAttribute("staff_list")%> </p>--%>
     <%--<h2><% List<User> user=( List<User>)request.getAttribute("model"); %></h2>--%>
+
+    <script type="text/javascript">
+        function goBack(link) {
+            window.location=  link;
+        }
+    </script>
+
 </head>
 <body>
-<script>
-   // var form = document.forms[0];
-    //var select = form.elements.namedItem("staff");
-    var staff = request.getAttribute("staff_list");
-    var myDropDownList =  document.getElementById("staff");
 
-    for (var i = 0; i < 10; i++) {
-        myDropDownList.option[i]=new Option("Строка списка 0", "str0");
 
-        if(option.selected) {
-            alert( option.value );
-        }
-    }
-</script>
 <h1> Add new payment </h1>
 <div class="box1">
     <div class="head">New payment </div>
 
-    <div class="body">
+    <div class="body" >
+
+
+<form id="newPaymentForm" action="" method="POST"/>
 
         <table class="form condensed">
             <tbody>
@@ -47,20 +47,31 @@
                 <td class="control">
                     <span class="control-label"> Customer Id </span>
                     <span class="control-body">
-                        <input id="customer_id" name="customer_id"  style="width: 85px" value=<%=payment.getCustomer_id()%> type="text"> </input>
+                        <input id="customer_id" name="customer_id"  style="width: 175px" value=<%=payment.getCustomer_id()%> type="text" disabled="disabled"> </input>
                     </span>
                 </td>
 
                 <td class="control">
-                    <span class="control-label"> Payment Id </span>
-                    <span class="control-body"></span>
-                    <input id="payment_id" name="payment_id" style="width: 170px" type=text"> </input>
+                    <%--<span class="control-label" hidden> Payment Id </span>--%>
+                    <%--<span class="control-body" hidden></span>--%>
+                    <input id="payment_id" hidden name="payment_id" style="width: 175px" type=text" disabled="disabled"> </input>
                 </td>
 
                 <td class="control">
-                    <span class="control-label"> Staff Id </span>
-                    <span class="control-body"></span>
-                    <input id="staff_id" name="staff_id" style="width: 170px" type="text"> </input>
+                    <span class="control-label"> Payment reason  </span>
+                    <span class="control-body" >
+
+                   <select select id = "rental_id"  style="width: 300px;" name="rental_id">
+
+                   <option selected="selected" value="">Select ... </option>
+                    <c:forEach items="${rental_list}" var="row">
+
+                        <option value="${row.rental_id}"> ${row.title}</option>
+
+                    </c:forEach>
+                   </select>
+                    </span>
+
                 </td>
 
             </tr>
@@ -68,31 +79,32 @@
                 <td class="control">
                     <span class="control-label"> Amount </span>
                     <span class="control-body"></span>
-                    <input id="amount" name="amount" type="text" style="width: 170px" value = <%=payment.getAmount()%>  > </input>
+                    <input id="amount" name="amount" type="text" style="width: 175px" value = <%=payment.getAmount()%>  > </input>
                 </td>
 
                 <td class="control">
                     <span class="control-label"> Payment date </span>
                     <span class="control-body"></span>
-                    <input id="payment_date" name="payment_date" style="width: 175px" type="datetime"> </input>
+                    <%--<input id="payment_date" name="payment_date" style="width: 175px" type="datetime" disabled="disabled"value = <%=payment.getPayment_date()%> > </input>--%>
+                    <input id="MyDate" type="datetime" disabled="disabled" style="width: 175px" >
+                    <script>
+                        var dt=new Date();
+                        var month = dt.getMonth()+1;
+                        if (month<10) month='0'+month;
+                        var day = dt.getDate();
+                        if (day<10) day='0'+day;
+                        var year = dt.getFullYear();
+                        MyDate.value=day+'.'+month+'.'+year;
+                    </script>
+
                 </td>
 
-                <td class="control">
-                    <span class="control-label"> Staff member </span>
-                    <span class="control-body">
-                    <select  id="active" name="active" style="width: 170px"  >
-                     <option value="ALL" selected="selected">All</option>
-                     <option value="0">Active</option>
-                     <option value="1">Passive</option>
-                     </select>
-                    </span>
-                </td>
 
                 <td class="control">
                     <span class="control-label"> Staff member list  </span>
                     <span class="control-body" >
 
-                   <select select id = "staff"  style="width: 300px;" name="staff">
+                   <select select id = "mystaff"  style="width: 300px;" name="staff">
 
                    <option selected="selected" value="">Select ... </option>
                     <c:forEach items="${staff_list}" var="row">
@@ -106,37 +118,47 @@
                 </td>
             </tr>
 
-            <div class="clear10"></div>
-            <div class="actions">
-                <a class="btn-pri" href="#" onclick="">
-                    <span>Reset form </span>
-                </a>
-            </div>
-
             </tbody>
 
         </table>
+
     </div>
 </div>
-<%--<input type ="submit" name="addProperty" value="Submit"></br>--%>
+
 
 <div class="clear10"></div>
 <div class="actions">
 
     <div class="actions">
-        <a class="btn-pri" href="#" onclick="" >
+        <a class="btn-pri" href="#" onclick="goBack('./main')" >
             <span>Back </span>
         </a>
 
-        <a class="btn-pri" href="#" onclick="" >
+        <a class="btn-pri" href="#" onclick="goBack('./main')">
             <span>Cancel new payment </span>
         </a>
 
-        <a class="btn-pri" href="#" onclick="">
+        <a class="btn-pri" href="#"  onclick="document.getElementById('newPaymentForm').submit();goBack('./payments?customer_id=<%=payment.getCustomer_id()%>')">
             <span>Submit new payment </span>
+
+            <%--<script type="text/javascript">--%>
+                <%--function showMessage () {--%>
+                    <%--alert("Payment submitted");--%>
+                <%--}--%>
+
+                <%--function goBack(link) {--%>
+                  <%--//  alert('Payment submitted');--%>
+                    <%--//goBack('./payments?customer_id=<%=payment.getCustomer_id()%>')--%>
+                    <%--window.location = link;--%>
+                <%--}--%>
+
+            <%--</script>--%>
         </a>
     </div>
 
 </div>
+
+</form>
+
 </body>
 </html>

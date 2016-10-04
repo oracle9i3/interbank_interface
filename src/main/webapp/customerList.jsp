@@ -1,13 +1,16 @@
 <%@ page import="lv.javaguru.java2.servlet.mvc.CustomerListController" %>
 <%@ page import="lv.javaguru.java2.domain.PageInfo" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>--%>
-<%--<%@ taglib prefix="myl" tagdir="/WEB-INF/tags" %>--%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:a="http://www.w3.org/1999/xhtml">
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<%--script<script type="text/javascript" src="../js/customer_list_utilites.js"></script>--%>
 <%--
   Created by IntelliJ IDEA.
   User: Svetlana Titova
@@ -20,22 +23,45 @@
 <head>
 
     <title>Interbank interface</title>
-    <%--<link href="${pageContext.request.contextPath}/styles/main_page_style.css" rel="stylesheet" type="text/css" />--%>
     <link href="${pageContext.request.contextPath}/styles/common_styles.css" rel="stylesheet" type="text/css" />
-    <%--<link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">--%>
+    <script type="text/javascript">
+
+
+        function nextPage(link) {
+            window.location = link;
+        }
+        function resetFilter(){
+            //document.getElementById('input_first_name').value ='aaaa'
+            $('#input_customer_id').val('changed Value');
+        }
+
+        function applySearchCriteria() {
+            var inputElement1 = document.getElementById('input_customer_id');
+            var inputElement2 = document.getElementById('input_first_name');
+            var inputElement3 = document.getElementById('input_last_name');
+            window.location = "./main?id=" + inputElement1.value+"?first_name="+inputElement2.value;
+        }
+
+        function checkUncheckAll(theElement){
+            var $el=jQuery(theElement);
+            $el.closest('form').find('[type=checkbox][name!=checkall]').prop('checked',$el.prop('checked'));
+            alert("privet");
+            return false;
+
+        }
+
+        function customersExport(command){
+            $('#exportCommand').val(command);
+            $('#customersListForm').attr('action',${exportSelectedURL}).submit();
+            return false;
+        }
+
+    </script>
+
 </head>
 
 <body>
-<script>
-    function nextPage(link) {
-        window.location = link;
-    }
-    function checkUncheckAll(theElement){
-        var $el=jQuery(theElement);
-        $el.closest('form').find('[type=checkbox][name!=checkall]').prop('checked',$el.prop('checked'));
-    }
 
- </script>
 
 <div class="header">
 <h2>  Interbank interface </h2>
@@ -60,17 +86,11 @@
     </ul>
 </div>
 
-<%--<div class="clear20" ></div>--%>
-
 <h1>Customers list</h1>
 <div class="box1">
     <div class="head">Filter</div>
 
     <div class="body">
-        <%--<input id="customer_id" name="customer_id" value="0" > </input>--%>
-        <%--<input id="store_id" name="store_id" value="0" type="hidden"> </input>--%>
-        <%--<input id="first_name" name="first_name" value=" " > </input>--%>
-        <%--<input id="last_name" name="last_name" value=" " > </input>--%>
 
         <table class="form condensed">
             <tbody>
@@ -78,40 +98,41 @@
                 <td class="control">
                     <span class="control-label"> Customer Id </span>
                     <span class="control-body">
-                        <input id="customer_id" name="customer_id" style="width: 85px" value="599" type="text"> </input>
+                        <input id="input_customer_id" name="input_customer_id" style="width: 85px"  type="text"> </input>
                     </span>
                 </td>
 
                <td class="control">
                 <span class="control-label"> First name </span>
                 <span class="control-body"></span>
-                <input id="first_name" name="first_name" style="width: 170px" type="text"> </input>
+                <input id="input_first_name" name="input_first_name" style="width: 175px" type="text"> </input>
                </td>
+
 
                 <td class="control">
                     <span class="control-label"> Last name </span>
                     <span class="control-body"></span>
-                    <input id="last_name" name="last_name" style="width: 170px" type="text"> </input>
+                    <input id="input_last_name" value="${user.role.id}" name="last_name" style="width: 175px" type="text"> </input>
                 </td>
 
             </tr>
-            <tr class="form-row">
+             <tr class="form-row">
                 <td class="control">
                     <span class="control-label"> Email </span>
                     <span class="control-body"></span>
-                    <input id="email" name="email" style="width: 165px" type="text"> </input>
+                    <input id="input_email" name="email" style="width: 175px" type="text"> </input>
                 </td>
 
                 <td class="control">
                     <span class="control-label"> Last update </span>
                     <span class="control-body"></span>
-                    <input id="last_update" name="last_update" style="width: 165px" type="text"> </input>
+                    <input id="input_last_update" name="last_update" style="width: 175px" type="text"> </input>
                 </td>
 
                 <td class="control">
                     <span class="control-label"> Status </span>
                     <span class="control-body">
-                    <select  id="active" name="active" style="width: 85px" >
+                    <select  id="input_active" name="active" style="width: 85px" >
                      <option value="ALL" selected="selected">All</option>
                      <option value="0">Active</option>
                      <option value="1">Passive</option>
@@ -120,10 +141,19 @@
                 </td>
             </tr>
 
-            <%--<div class="clear10"></div>--%>
             <div class="actions">
-                <a class="btn-pri" href="#" onclick="">
+                <a class="btn-pri" href="" onclick='applySearchCriteria()'>
                     <span>Show</span>
+                </a>
+
+                <a class="btn-pri" href="" onclick='resetFilter()'>
+                    <span>Reset filter</span>
+                    <script type="text/javascript">
+                        function resetFilter(){
+                            //document.getElementById('input_first_name').value ='aaaa'
+                            $('#input_customer_id').val('changed Value');
+                        }
+                    </script>
                 </a>
             </div>
 
@@ -132,14 +162,63 @@
         </table>
     </div>
     </div>
-<div class="clear1"> </div>
+<div class="clear1">  </div>
+
+
+
+<form:form name="customerListForm" commandName="customerListForm" action="customerList" enctype="multipart/form-data">
+<input type="hidden" name="exportCommand" id="exportCommand"/>
+
+
+<div class="box1">
+    <spring:url var="exportSelectedURL" value="customersExport" javaScriptEscape="true"/>
+    <div class="actions" >
+        <a class="btn-pri" href="#" onclick="return customersExport('customersExport')">
+            <span>Export selected to xml</span>
+
+            <script type="text/javascript">
+                function customersExport(command){
+                    $('#exportCommand').val(command);
+                    $('#customersListForm').attr('action',${exportSelectedURL}).submit();
+                    alert("privet");
+                    return false;
+                }
+            </script>
+
+
+        </a>
+
+        <a class="btn-pri" href="#" onclick="">
+            <span>Update status selected to </span>
+        </a>
+
+        <td class="control">
+
+            <span class="control-body">
+                    <select  id="active1" name="active" style="width: 85px" >
+                     <option value="0" selected="selected">Active</option>
+                     <option value="1">Passive</option>
+                     </select>
+                    </span>
+        </td>
+    </div>
+</div>
+
 <div class="datatable">
-<table id= "customersList" width="100%" border="0" cellpadding="0" cellspacing="0">
+
+<table id= "customersListDataTable" width="100%" border="0" cellpadding="0" cellspacing="0">
     <thead >
 
 <tr>
     <th nowrap="nowrap">
-       <input type="checkbox" name ="checkbox2" id="checkbox2" onclick="checkUncheckAll(this);"/></input>
+    <input type="checkbox" name ="checkall" id="checkbox2"  name="checkbox2" onclick="checkUncheckAll(this)"/>
+        <script type="text/javascript">
+            function checkUncheckAll(theElement){
+                var $el=jQuery(theElement);
+                $el.closest('form').find('[type=checkbox][name!=checkall]').prop('checked',$el.prop('checked'));
+            }
+        </script>
+
     </th>
     <th  nowrap="nowrap" >Customer Id </th>
 
@@ -153,7 +232,7 @@
     <tbody>
     <tr>
     <c:forEach items="${model}" var="row" varStatus="status">
-    <c:set var="checkValue" value="${row.customer_id}"/>
+    <c:set var="checkValue" value="${row.customer_id}->${row.customer_id}" />
         <c:choose>
         <c:when test="${(status.index)%2 eq 0 }">
         <tr class="even">
@@ -215,9 +294,13 @@
     </c:choose>
 
     </c:forEach>
-    </tbody>
 </table>
+
+    </div>
+
+
  <div class="navigator">
+
 <div class="footer">
      <div class="tablecount"></div>
      <u1 class="pager" >
@@ -234,7 +317,11 @@
      </li>
 
      </u1>
+
+     </form:form>
  </div>
+
+
 </body>
 
 </html>

@@ -29,7 +29,6 @@ public class CustomerListController {
 
     @Autowired
     private SessionFactory sessionFactory;
-
     HttpSession session;
 
 @RequestMapping(value ={"main" , ""}, method = {RequestMethod.GET})
@@ -41,13 +40,14 @@ public ModelAndView processRequest(HttpServletRequest request, HttpServletRespon
     int rowsPerPage=9;
     session = request.getSession();
 
+
     String page = request.getParameter("page");
     if (page == null) page = "1";
     else if (Integer.parseInt(page) < 1) page = "1";
 
     try{
          myFullList=customerDAO.getAll();
-         myList =customerDAO.getRange((Integer.parseInt(page) - 1) ,rowsPerPage);//TO DO
+         myList =customerDAO.getRange((Integer.parseInt(page) - 1) ,rowsPerPage,request );//TO DO
     } catch (DBException ex) {
 
     }
